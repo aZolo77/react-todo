@@ -1,13 +1,13 @@
 import React from 'react';
 
 // components
-import TodoListItem from './todo-list-item';
+import TodoListItem from '../todo-list-item';
 
 // styles
 import './todo-list.css';
 
 // creating List Component
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, onDeleted }) => {
   // Array iteration
   const elements = todos.map(item => {
     // get all props except [id]
@@ -15,7 +15,7 @@ const TodoList = ({ todos }) => {
     // Spreading an object
     return (
       <li key={id} className="list-group-item">
-        <TodoListItem {...itemProps} />
+        <TodoListItem {...itemProps} onDeleted={() => onDeleted(id)} />
       </li>
     );
   });
